@@ -1,0 +1,3 @@
+3fooauUykFCdRcpm
+PRAVAS
+mongodb+srv://PRAVAS:3fooauUykFCdRcpm@cluster0.tks4y6w.mongodb.net/?retryWrites=true&w=majority
