@@ -12,7 +12,7 @@ catch((err) => {console.log(err)})
 
 app.use(express.json());
 app.use("/api/user" , userRoute);
-app.use("/api/user" , authRoute);
+app.use("/api/auth" , authRoute);
 
 app.listen(5000, () => {
     console.log("Backend server is running!");
