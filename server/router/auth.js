@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User")
 const CryptoJS = require("crypto-js")
+const jwt = require("jsonwebtoken")
 
 router.post("/register", async (req, res) => {
 
@@ -42,16 +43,17 @@ router.post('/login', async (req, res) => {
         res.status(400).json({ error: "Plese Fill All The Fill" });
     } else {
         try {
-            const mainUser = await AllUser.findOne({ email: email });
+            const mainUser = await User.findOne({ email: email });
 
             if (mainUser) {
                 const hashedPassword = CryptoJS.AES.decrypt(
-                    password,
+                    mainUser.password,
                     process.env.PASS_SEC
                 );
-
+                console.log(process.env.PASS_SEC)
 
                 const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+                console.log(originalPassword)
 
                 if (originalPassword === password) {
                     const accessToken = jwt.sign(
@@ -63,16 +65,15 @@ router.post('/login', async (req, res) => {
                         { expiresIn: "3d" }
                     );
 
-                    const { password, ...others } = user._doc;
+                    const { password, ...others } = mainUser._doc;
                     res.status(200).json({ ...others, accessToken });
                     res.send("LOGIN SUCCESSFULL");
 
-
                 } else {
-                    res.status(400).json({ error: "Invalid Login !" });
+                    res.status(402).json({ error: "Password not same" });
                 }
             } else {
-                res.status(400).json({ error: "Invalid Login !" });
+                res.status(401).json({ error: "Invalid Login !" });
             }
 
 
