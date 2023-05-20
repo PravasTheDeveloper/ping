@@ -9,12 +9,17 @@ const router = require("express").Router();
 
 //CREATE
 
-router.post("/", verifyTokenAndAdmin, async (req, res) => {
+router.get("/hei",async(req,res) => {
+  res.send("hello")
+})
+// verifyTokenAndAdmin
+router.post("/", async (req, res) => {
   const newProduct = new Product(req.body);
 
   try {
     const savedProduct = await newProduct.save();
-    res.status(200).json(savedProduct);
+    // res.status(200).json(savedProduct);
+    res.status(200).send("Saved All File")
   } catch (err) {
     res.status(500).json(err);
   }

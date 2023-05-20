@@ -8,7 +8,6 @@ const ProductSchema = new mongoose.Schema({
     desc :{
         type:String,
         require:true,
-        unique:true
     },
     img:{
         type:String,
@@ -16,24 +15,30 @@ const ProductSchema = new mongoose.Schema({
     },
     categories:{
         type:String,
-        require:true,
     },
     size:{
-        type:String,
-        require:true,
+        type:Array,
     },
     stock:{
-        type:Number,
-        require:true,
+        type:Boolean,
     },
     color:{
-        type:String,
-        require:true,
+        type:Array,
     },
     price:{
         type:Number,
         require:true,
     },
+    productCode:{
+        type:String,
+        unique:true
+    },
+    rating:{
+        type:Number
+    },
+    sell:{
+        type:Number
+    }
     
 },{
     timestamps:true

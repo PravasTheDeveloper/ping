@@ -13,10 +13,10 @@ function Home() {
             <Announcement />
             <NavBar />
             <Slider />
-            {/* <CatagoryOption />
+            <CatagoryOption />
             <PopularProduct />
             <NewsLatter />
-            <Footer /> */}
+            <Footer />
         </>
     )
 }

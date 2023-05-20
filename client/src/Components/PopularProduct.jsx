@@ -5,35 +5,35 @@ import { BiSearch , BiLike } from 'react-icons/bi';
 export const popularProducts = [
     {
         id: 1,
-        img: "https://d3o2e4jr3mxnm3.cloudfront.net/Mens-Jake-Guitar-Vintage-Crusher-Tee_68382_1_lg.png",
+        img: "/Product/t-shirt001.gif",
     },
     {
         id: 2,
-        img: "/Product/product2.gif",
+        img: "/Product/hudi001.gif",
     },
     {
         id: 3,
-        img: "https://www.prada.com/content/dam/pradanux_products/U/UCS/UCS319/1YOTF010O/UCS319_1YOT_F010O_S_182_SLF.png",
+        img: "/Product/polo001.gif",
     },
     {
         id: 4,
-        img: "/Product/product4.gif",
+        img: "/Product/trakpant001.gif",
     },
     {
         id: 5,
-        img: "https://images.ctfassets.net/5gvckmvm9289/3BlDoZxSSjqAvv1jBJP7TH/65f9a95484117730ace42abf64e89572/Noissue-x-Creatsy-Tote-Bag-Mockup-Bundle-_4_-2.png",
+        img: "/Product/sport_tshirt.gif",
     },
     {
         id: 6,
-        img: "https://d3o2e4jr3mxnm3.cloudfront.net/Rocket-Vintage-Chill-Cap_66374_1_lg.png",
+        img: "/Product/shirt001.gif",
     },
     {
         id: 7,
-        img: "/Product/product7.gif",
+        img: "/Product/jies.gif",
     },
     {
         id: 8,
-        img: "https://www.pngarts.com/files/3/Women-Jacket-PNG-High-Quality-Image.png",
+        img: "/Product/Full_Sleve001.gif",
     },
 ]
 
@@ -41,7 +41,9 @@ function PopularProduct() {
     return (
         <>
             <div className='w-full h-screen container mx-auto'>
+            <div className='text-3xl mt-10'>Our Top Product</div>
                 <div className='w-full h-full flex flex-wrap items-end'>
+                
                     {
                         popularProducts.map((data, indx) => {
                             return (
