@@ -1,4 +1,0 @@
-3fooauUykFCdRcpm
-PRAVAS
-mongodb+srv://PRAVAS:3fooauUykFCdRcpm@cluster0.tks4y6w.mongodb.net/?retryWrites=true&w=majority
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWNiYjc4NmNiMzBlMGMyYTg1N2I5NSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2ODM3OTk3OTAsImV4cCI6MTY4NDA1ODk5MH0.-SiytJ6D6R5VFo924tFTAHOHNxrXhYT9-1oWo3aZjU8
