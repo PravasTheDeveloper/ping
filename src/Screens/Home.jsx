@@ -2,6 +2,7 @@ import React from 'react'
 import Announcement from '../components/HomePage/Announcement'
 import Navbar from '../components/HomePage/Navbar'
 import Poster from '../components/HomePage/Poster'
+import Categorys from '../components/HomePage/Categorys'
 
 function Home() {
   return (
@@ -9,6 +10,7 @@ function Home() {
       <Announcement />
       <Navbar />
       <Poster />
+      <Categorys />
     </>
   )
 }
