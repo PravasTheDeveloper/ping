@@ -1,41 +1,87 @@
-import React from 'react'
-import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai'
+import React, { useEffect, useState } from 'react'
+import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import { useDispatch } from 'react-redux';
+import { updateProduct } from '../../redux/cartRedux';
 
-function CartProducts() {
+
+function CartProducts({ name, productprice, image, productcode, quantity }) {
+
+    const [product, setproduct] = useState({
+        "name": "",
+        "image": "",
+        "price": null,
+        "productcode": "",
+        "quantity": null,
+    })
+
+    const [producttotalprice, setproducttotalprice] = useState()
+
+    useEffect(() => {
+        setproduct({ name, image, price: productprice, productcode, quantity });
+        setproducttotalprice(productprice);
+    }, [])
+
+    const dispatch = useDispatch();
+
+    const cartIncrement = () => {
+        let quantity = product.quantity + 1;
+        setproducttotalprice(product.price * quantity);
+        setproduct({ ...product, quantity })
+        dispatch(updateProduct({ ...product, quantity }))
+    }
+
+    const cartDecrement = () => {
+        let quantity = product.quantity;
+        quantity > 1 ? quantity = quantity - 1 : quantity = 1;
+        setproducttotalprice(product.price * quantity);
+        setproduct({ ...product, quantity })
+        dispatch(updateProduct({ ...product, quantity }))
+    }
+
     return (
         <>
-            
-                <div className='h-[100px] flex items-center border my-5'>
-                    <div className='h-full bg-slate-500 w-[100px] rounded-full flex justify-center items-center'>
-                        <img src="/Categorys/Hudi-001.gif" className='h-[90%] rounded-full w-auto bg-white' alt="" />
+
+            <div className='h-[100px] w-full border my-5 cart_grid_options' >
+                <div className='h-full w-[100px] flex justify-center items-center'>
+                    <img src={`/Products/${image}`} className='h-[90%] rounded-md w-auto bg-slate-100' alt="" />
+                </div>
+                <div className='flex flex-col justify-center'>
+                    <div className='text-md font-semibold h-6 overflow-hidden'>
+                        {name}
                     </div>
-                    <div className='ml-10'>
-                        <div className='text-xl'>
-                            White Hudi
-                        </div>
-                        <div className=''>
-                            Price : 500 $
-                        </div>
-                        <div className=''>
-                            Quantity : 1
-                        </div>
+                    <div className='text-sm text-slate-600'>
+                        Product Code : {productcode}
                     </div>
-                    <div className='ml-10 flex flex-col items-center'>
-                        <div className='flex mb-5'>
-                            <div>
-                                <button className='w-4 h-4 bg-slate-700 rounded-full text-white'><AiOutlinePlus /></button>
-                            </div>
-                            <div className='w-10 flex justify-center'>1</div>
-                            <div>
-                                <button className='w-4 h-4 bg-slate-700 rounded-full text-white flex justify-center items-center text-xl'>-</button>
-                            </div>
+                    <div className='text-sm text-slate-600'>
+                        Quantity : {product.quantity}
+                    </div>
+                </div>
+                <div className='w-full h-full flex items-center text-white select-none'>
+                    <div className='h-full w-full flex items-center'>
+                        <div className='bg-slate-700 h-[30px] w-[30px] flex justify-center items-center cursor-pointer' onClick={cartDecrement} >
+                            <AiOutlineMinus />
                         </div>
-                        <div className='bg-rose-500 w-7 text-white flex justify-center items-center rounded-full text-xl h-7'>
-                            <button><AiOutlineDelete /></button>
+                        <div className='w-[50px] h-[30px] border flex justify-center items-center text-slate-950'>
+                            {product.quantity}
+                        </div>
+                        <div className='bg-slate-700 h-[30px] w-[30px] flex justify-center items-center cursor-pointer' onClick={cartIncrement} >
+                            <AiOutlinePlus />
                         </div>
                     </div>
                 </div>
-            
+                <div className='w-[200px]  flex justify-around items-center'>
+                    <div className='text-2xl'>
+                        <div className='text-[12px] text-slate-400 font-semibold'>
+                            {productprice} X {quantity}
+                        </div>
+                        {producttotalprice} ৳
+                    </div>
+                    <div className='w-[30px] h-[30px] bg-rose-600 flex justify-center items-center text-xl text-white rounded-md'>
+                        <AiOutlineDelete />
+                    </div>
+                </div>
+            </div>
+
         </>
     )
 }

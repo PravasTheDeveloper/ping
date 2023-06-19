@@ -1,7 +1,15 @@
 import React from 'react'
 import CartProducts from './CartProducts'
+import { useSelector } from 'react-redux'
 
 function CartPage() {
+    const cartData = useSelector(state => state.cart.products);
+    let total_price = 0;
+    cartData.forEach(element => total_price += element.price*element.quantity);
+    let withTaxprice = total_price + (total_price * 10/100 );
+    let cupon_discount = 100;
+    
+    
     return (
         <>
             <div className='container mx-auto bg-white min-h-[80vh] w-full mt-10 p-14'>
@@ -11,8 +19,13 @@ function CartPage() {
                     </div>
                     <div className='w-full h-full flex'>
                         <div className='w-full h-full mr-10 pt-5'>
-                            <CartProducts />
-                            <CartProducts />
+                            {
+                                
+                                cartData.map((data , inx) =>{
+                                    return <CartProducts name={data.name} productprice={data.price} image={data.image} productcode={data.productcode} quantity={data.quantity} />
+                                })
+                                
+                            }
                         </div>
                         <div className='border w-[500px] h-full p-10'>
                             <div className='border-b text-xl pb-5'>
@@ -50,22 +63,22 @@ function CartPage() {
                                     <div className='mt-5 font-semibold'>
                                         <div className='flex justify-between'>
                                             <div>Sub Total</div>
-                                            <div>500 $</div>
+                                            <div>{total_price} ৳</div>
                                         </div>
                                         <div className='flex justify-between'>
                                             <div>Tax(10%)</div>
-                                            <div>50 %</div>
+                                            <div>{withTaxprice} ৳</div>
                                         </div>
                                         <div className='flex justify-between border-b pb-5'>
                                             <div>Cupon Discount</div>
-                                            <div>- 50 $</div>
+                                            <div>- {cupon_discount}৳</div>
                                         </div>
                                         <div className='flex justify-between mt-5'>
                                             <div>Total</div>
-                                            <div>500 $</div>
+                                            <div>{withTaxprice - cupon_discount} ৳</div>
                                         </div>
                                         <div className='h-auto w-full'>
-                                            <button className='bg-slate-600 w-full py-2 rounded-full mt-5 text-white'>Pay 500 $</button>
+                                            <button className='bg-slate-600 w-full py-2 rounded-full mt-5 text-white'>Pay {withTaxprice - cupon_discount} ৳</button>
                                         </div>
                                     </div>
                                 </div>

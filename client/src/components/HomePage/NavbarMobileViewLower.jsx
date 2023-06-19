@@ -1,5 +1,6 @@
 import React from 'react';
 import { BiCart, BiHomeAlt, BiSearch, MdOutlineAccountCircle } from 'react-icons/all.js'
+import { Link } from 'react-router-dom';
 
 function NavbarMobileViewLower() {
     return (
@@ -10,7 +11,9 @@ function NavbarMobileViewLower() {
                         <BiHomeAlt />
                     </div>
                     <div>
-                        <BiCart />
+                        <Link to="/cart">
+                            <BiCart />
+                        </Link>
                     </div>
                     <div>
                         <MdOutlineAccountCircle />

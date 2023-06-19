@@ -40,5 +40,16 @@ router.get("/", async (req, res) => {
     }
 });
 
+//GET PRODUCT
+router.get("/:id", async (req, res) => {
+    try {
+        const productCode = req.params.id;
+        const product = await Product.findOne({productCode : productCode});
+        res.status(200).json(product);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 
 module.exports = router

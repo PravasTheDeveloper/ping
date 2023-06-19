@@ -14,3 +14,25 @@
 body{
   background-color: #e2e8f0;
 }
+
+.product_page_grid{
+  display: grid;
+  grid-template-columns: .2fr 1fr;
+}
+
+.right_side_product_grid{
+  display: grid;
+  grid-template-rows: 80px 1fr;
+}
+
+@media only screen and (max-width: 640px) {
+  .product_page_grid{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+.cart_grid_options{
+  display: grid;
+  grid-template-columns: 130px 1fr 180px 200px;
+}

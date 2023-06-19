@@ -48,7 +48,7 @@ function ProductPage({ name }) {
                     {
                         Products.map((data , inx) =>{
                             if(data)
-                            return <ProductCard name={data.name} image={data.imageUrl} brand={data.brand} price={data.price} sell={data.sell}  />
+                            return <ProductCard name={data.name} image={data.imageUrl} brand={data.brand} price={data.price} sell={data.sell} productCode={data.productCode}  />
                         })
                     }
                 </div>

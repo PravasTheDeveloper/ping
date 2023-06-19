@@ -1,9 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
 import { AiOutlineDown, BiCart, BiSearch, MdOutlineAccountCircle, RxCross2 } from "react-icons/all.js"
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 function NavbarWebView() {
+    const cartQantity = useSelector(state => state.cart.quantity)
 
     const [SearchBar, setSearchBar] = useState(false)
     const [PersonPanel, setPersonPanel] = useState(false)
@@ -57,7 +59,7 @@ function NavbarWebView() {
                             <div className='mr-5 relative'>
                                 <BiCart />
                                 <div className='bg-slate-700 flex justify-center items-center absolute w-5 h-5 rounded-full text-sm text-white top-[-8px] right-[-10px]'>
-                                    2
+                                    {cartQantity}
                                 </div>
                             </div>
                         </Link>
