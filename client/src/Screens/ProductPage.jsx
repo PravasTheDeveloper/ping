@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 
 function ProductPage() {
   const param = useParams().name;
+  // console.log(param)
   return (
     <>
         <NavbarWebView />

@@ -5,11 +5,11 @@ import { useParams } from 'react-router-dom';
 
 function RightSideComponents() {
     const [Products, setProducts] = useState([])
-    const { name } = useParams();
+    const name = useParams().name.toUpperCase();
     const [paramSet, setparamSet] = useState()
 
+    const callAllProduct = async () => {
 
-    const callAboutPage = async () => {
         try {
             const res = await fetch("/api/product", {
                 method: "GET",
@@ -21,8 +21,8 @@ function RightSideComponents() {
             });
 
             const data = await res.json();
-            // const topSellingProducts = data.sort((a, b) => b.sell - a.sell).slice(0, 10);
-            setProducts(data);
+
+            filterProduct(data);
 
             if (!res.status === 200) {
                 const error = new Error(res.error);
@@ -34,13 +34,23 @@ function RightSideComponents() {
         }
     }
 
-    console.log(paramSet)
+    const filterProduct = (data) => {
+        if (name == "ALL") {
+            const result = data.filter((items) => { return items })
+            setProducts(result)
+        } else {
+            const result = data.filter((items) => { return items.category === name })
+            setProducts(result)
+        }
+
+    }
+
 
     useEffect(() => {
         setparamSet(name)
-        callAboutPage();
+        callAllProduct();
+    }, [name]);
 
-    }, []);
     return (
         <>
             <div className='w-full h-full bg-white right_side_product_grid sm:pl-10 p-2 sm:p-5'>
@@ -65,9 +75,7 @@ function RightSideComponents() {
                         <div className='w-full h-auto grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 mt-5 sm:mt-10 gap-4 md:gap-10 mb-20 sm:mb-5 max-h-44'>
                             {
                                 Products.map((data, inx) => {
-                                    if (data.category == paramSet) {
-                                        return <ProductCard name={data.name} image={data.imageUrl} brand={data.brand} price={data.price} sell={data.sell} />
-                                    }
+                                        return <ProductCard key={inx} name={data.name} image={data.imageUrl} brand={data.brand} price={data.price} sell={data.sell} productCode={data.productCode} />
                                 })
                             }
                         </div>
@@ -79,3 +87,8 @@ function RightSideComponents() {
 }
 
 export default RightSideComponents
+// Products.map((data, inx) => {
+//     if (data.category == paramSet.toUpperCase()) {
+//         return <ProductCard key={inx} name={data.name} image={data.imageUrl} brand={data.brand} price={data.price} sell={data.sell} productCode={data.productCode} />
+//     }
+// })

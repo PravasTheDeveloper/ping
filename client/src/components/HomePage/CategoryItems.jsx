@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function CategoryItems({ name, product, img }) {
+function CategoryItems({ name, product, img ,cataName }) {
     return (
         <>
-            <Link to={`/products?catagory=${name}`} className='flex justify-center items-center overflow-hidden rounded-md hover:bg-slate-100 md:hover:bg-white group cursor-pointer'>
+            <Link to={`/products/${cataName}`} className='flex justify-center items-center overflow-hidden rounded-md hover:bg-slate-100 md:hover:bg-white group cursor-pointer'>
                 
                     <div className='2xl:bg-slate-200 w-auto 2xl:w-[200px] flex flex-col justify-center items-center p-0 2xl:p-5'>
                         <div className='lg:w-[90px] mt-2 lg:h-[90px] h-[60px] w-[60px] p-5 group-hover:p-0 duration-300 2xl:bg-white bg-slate-300 rounded-full flex justify-center items-center overflow-hidden '>
