@@ -13,7 +13,7 @@ function ProductPage() {
     <>
         <NavbarWebView />
         <NavbarMobileView />
-        <div className='h-screen w-full bg-red-100 container mx-auto product_page_grid mt-10'>
+        <div className='h-full min-h-[90vh] w-full bg-red-100 container mx-auto product_page_grid mt-10'>
             <LeftSideComponents />
             <RightSideComponents />
         </div>

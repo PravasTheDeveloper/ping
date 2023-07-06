@@ -13,7 +13,10 @@ function LeftSideComponents() {
                             All
                         </Link>
                     </div>
-                    <div className='mb-3'>Men Jacket</div>
+                    <div className='mb-3'>
+                        <Link to={`/products/ALL`}>
+                            Men Jacket
+                        </Link></div>
                     <div className='mb-3'>Hudi</div>
                     <div className='mb-3'>Shoes</div>
                     <div className='mb-3'>T-Shirt</div>
