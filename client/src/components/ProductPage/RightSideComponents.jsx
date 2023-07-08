@@ -87,8 +87,3 @@ function RightSideComponents() {
 }
 
 export default RightSideComponents
-// Products.map((data, inx) => {
-//     if (data.category == paramSet.toUpperCase()) {
-//         return <ProductCard key={inx} name={data.name} image={data.imageUrl} brand={data.brand} price={data.price} sell={data.sell} productCode={data.productCode} />
-//     }
-// })
