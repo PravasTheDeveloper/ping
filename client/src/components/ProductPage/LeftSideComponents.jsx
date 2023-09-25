@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 
 function LeftSideComponents() {
     let { name } = useParams()
+    console.log(name)
     return (
         <>
             <div className='w-full h-full bg-white border-r border-slate-200 sm:block hidden'>

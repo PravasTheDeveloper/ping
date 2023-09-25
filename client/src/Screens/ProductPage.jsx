@@ -5,19 +5,23 @@ import NavbarWebView from '../components/HomePage/NavbarWebView'
 import NavbarMobileViewLower from '../components/HomePage/NavbarMobileViewLower'
 import NavbarMobileView from '../components/HomePage/NavbarMobileView'
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 function ProductPage() {
   const param = useParams().name;
   // console.log(param)
+  const loading = useSelector((state) => state.product.loading)
   return (
     <>
-        <NavbarWebView />
-        <NavbarMobileView />
-        <div className='h-full min-h-[90vh] w-full bg-red-100 container mx-auto product_page_grid mt-10'>
-            <LeftSideComponents />
-            <RightSideComponents />
-        </div>
-        <NavbarMobileViewLower />
+
+      <NavbarWebView />
+      <NavbarMobileView />
+      <div className='h-full min-h-[90vh] w-full bg-red-100 container mx-auto product_page_grid mt-10'>
+        <LeftSideComponents />
+        <RightSideComponents />
+      </div>
+      <NavbarMobileViewLower />
+
     </>
   )
 }
